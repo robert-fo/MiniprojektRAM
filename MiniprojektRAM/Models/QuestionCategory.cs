@@ -13,6 +13,6 @@ namespace MiniprojektRAM.Models
         public int Id { get; set; }
         [Required]
         [Display(Name="Frågekategori")]
-        public int CatName { get; set; }
+        public string CatName { get; set; }
     }
 }
