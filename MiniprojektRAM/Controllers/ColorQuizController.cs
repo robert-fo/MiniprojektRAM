@@ -58,6 +58,12 @@ namespace MiniprojektRAM.Controllers
         public ActionResult Edit()
         {
             var questions = repository.GetAllCategorieQuestions(1);
+            ViewBag.FeedBack = "Ny fråga.";
+
+            if (ViewBag.CorrAns == null)
+            {
+                ViewBag.CorrAns = 0;
+            }
 
             ViewBag.QuestionId = 0; 
             int i = 0;
@@ -66,7 +72,13 @@ namespace MiniprojektRAM.Controllers
             {
                 if (i == ViewBag.QuestionId)
                 {
-                    return View(item);
+                    ViewQuestion Vquestion = new ViewQuestion();
+                    Vquestion.Id = item.Id;
+                    Vquestion.cId = item.cId;
+                    Vquestion.QuestionText = item.QuestionText;
+                    Vquestion.AnswerText = item.AnswerText;
+                    //Vquestion.CorrAnswers = Vquestion.CorrAnswers + 1;
+                    return View(Vquestion);
                 }
                 i++;
             }
@@ -76,12 +88,13 @@ namespace MiniprojektRAM.Controllers
 
         // POST: ColorQuiz/Edit/5
         [HttpPost]
-        public ActionResult Edit(Question question)
+        public ActionResult Edit(ViewQuestion question)
         {
             try
             {
                 // TODO: Add update logic here
-               var questions = repository.GetAllCategorieQuestions(1);
+                var questions = repository.GetAllCategorieQuestions(1);
+                int corrAnswer = question.CorrAnswers;
 
                 foreach (var item in questions)
                 {
@@ -90,16 +103,22 @@ namespace MiniprojektRAM.Controllers
                         if (item.AnswerText.ToLower() == question.AnswerText.ToLower())
                         {
 
-                            ViewBag.CorrectAnswers++;
-                            ViewBag.FeedBack = "You answered correctly";
+                            corrAnswer++;
+                            ViewBag.FeedBack = "Du svarade rätt.";
                         }
                         else
                         {
-                            ViewBag.FeedBack = "Your answer was wrong, the correct answer is" + item.AnswerText;
+                            ViewBag.FeedBack = "Du svarade fel, rätt svar är: " + item.AnswerText;
                         }
-                        return View(item);
+                        ViewBag.CorrAns = corrAnswer;
+                        ViewQuestion Vquestion = new ViewQuestion();
+                        Vquestion.Id = item.Id;
+                        Vquestion.cId = item.cId;
+                        Vquestion.QuestionText = item.QuestionText;
+                        Vquestion.AnswerText = item.AnswerText;
+                        Vquestion.CorrAnswers = corrAnswer;
+                        return View(Vquestion);
                     }
-                    i++;
                 }
 
                 return View();
