@@ -15,13 +15,13 @@ namespace MiniprojektRAM.Models
         [Required]
         public int cId { get; set; }
 
-        [Required]
+        [Required, Display(Name = "Fråga")]
         public string Question { get; set; }
 
-        [Required]
+        [Required, Display(Name = "Svar")]
         public string Answer { get; set; }
 
-        [ForeignKey("cId")]
+        [ForeignKey("cId"), Display(Name = "Frågekategori")]
         public virtual QuestionCategory questionCategory { get; set; }
 
     }
