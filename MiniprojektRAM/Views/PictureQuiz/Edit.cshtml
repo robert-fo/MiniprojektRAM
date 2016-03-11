@@ -1,0 +1,71 @@
+﻿@model MiniprojektRAM.ViewModels.QuestionViewModel
+
+@{
+    ViewBag.Title = "Picture Quiz";
+//Layout = "~/Views/Shared/_GameLayout.cshtml";
+// använd storm bokstav i Model när man inte använder Html-helpers
+var imagePath = @Model.QuestionText;
+}
+
+<h2>Vad visar bilden?</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @*<h4>QuestionViewModel</h4>*@
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CorrAnswers)
+        @Html.HiddenFor(model => model.AnswerText)
+        <div class="form-group">
+            @Html.LabelFor(model => model.cId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.cId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.cId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.QuestionText, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                @*<h4 class = "control-label col-md-2">Vad visar bilden? </h4>*@
+                <div class="col-md-10">
+                    <img src=@imagePath alt="Bildplats" width="100" />
+
+                         @*@Html.DisplayFor(model => model.QuestionText, new { htmlAttributes = new { @class = "form-control" } })*@
+                         @*@Html.ValidationMessageFor(model => model.QuestionText, "", new { @class = "text-danger" })>*@
+                </div>
+            </div>
+         </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AnswerText, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AnswerText, new { htmlAttributes = new { @class = "form-control", @Value=" " } })
+                @Html.ValidationMessageFor(model => model.AnswerText, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CorrAnswers, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.CorrAnswers, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CorrAnswers, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kontrollera svar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

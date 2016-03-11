@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<a href="Edit">Answer a picture question quiz</a>
+<p>
+    @{
+        // Skriver endast ut detta om viewbag är satt i Index actionen efter man svara på alla frågor i en kategori
+        if (ViewBag.CorrectAnswers != null)
+        {
+            @Html.Raw("Antal rätt: ")
+            @ViewBag.CorrectAnswers
+
+        }
+    }
+</p>
