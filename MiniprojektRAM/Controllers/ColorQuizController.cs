@@ -1,5 +1,6 @@
 ﻿using MiniprojektRAM.Models;
 using MiniprojektRAM.Repository;
+using MiniprojektRAM.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,25 +60,20 @@ namespace MiniprojektRAM.Controllers
         {
             var questions = repository.GetAllCategorieQuestions(1);
             ViewBag.FeedBack = "Ny fråga.";
-
-            if (ViewBag.CorrAns == null)
-            {
-                ViewBag.CorrAns = 0;
-            }
-
             ViewBag.QuestionId = 0; 
+
             int i = 0;
 
             foreach (var item in questions) 
             {
                 if (i == ViewBag.QuestionId)
                 {
-                    ViewQuestion Vquestion = new ViewQuestion();
+                    QuestionViewModel Vquestion = new QuestionViewModel();
                     Vquestion.Id = item.Id;
                     Vquestion.cId = item.cId;
                     Vquestion.QuestionText = item.QuestionText;
                     Vquestion.AnswerText = item.AnswerText;
-                    //Vquestion.CorrAnswers = Vquestion.CorrAnswers + 1;
+                    Vquestion.CorrAnswers = 0;
                     return View(Vquestion);
                 }
                 i++;
@@ -88,13 +84,14 @@ namespace MiniprojektRAM.Controllers
 
         // POST: ColorQuiz/Edit/5
         [HttpPost]
-        public ActionResult Edit(ViewQuestion question)
+        public ActionResult Edit(QuestionViewModel question)
         {
             try
             {
                 // TODO: Add update logic here
                 var questions = repository.GetAllCategorieQuestions(1);
-                int corrAnswer = question.CorrAnswers;
+                //string ScorrAnswer = ViewBag.corrAnswer as string;
+                int corrAnswer = question.CorrAnswers; //Convert.ToInt32(ScorrAnswer);
 
                 foreach (var item in questions)
                 {
@@ -110,8 +107,8 @@ namespace MiniprojektRAM.Controllers
                         {
                             ViewBag.FeedBack = "Du svarade fel, rätt svar är: " + item.AnswerText;
                         }
-                        ViewBag.CorrAns = corrAnswer;
-                        ViewQuestion Vquestion = new ViewQuestion();
+                        ViewBag.corrAnswer = corrAnswer;
+                        QuestionViewModel Vquestion = new QuestionViewModel();
                         Vquestion.Id = item.Id;
                         Vquestion.cId = item.cId;
                         Vquestion.QuestionText = item.QuestionText;
