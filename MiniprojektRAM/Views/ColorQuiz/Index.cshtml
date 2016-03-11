@@ -1,19 +1,19 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "FärgfrågeQuiz - Index";
 }
 
-<h2>Index</h2>
-<a href="Edit">Answer a colorquestion quiz</a>
+<h2>FärgfrågeQuiz - Index</h2>
+@Html.ActionLink("Gör en färgquiz!", "Edit")
 <p>
-    @{
-        // Skriver endast ut detta om viewbag är satt i Index actionen efter man svara på alla frågor i en kategori
-        if (ViewBag.CorrectAnswers != null)
-        {
-            @Html.Raw("Gratulerar, du har besvarat alla frågor i kategorin.<br>")
-            @Html.Raw("Antal rätt: ")
-            @ViewBag.CorrectAnswers
-
+        @{
+            // Skriver endast ut detta om viewbag är satt i Index actionen efter man svara på alla frågor i en kategori
+            if (ViewBag.CorrectAnswers != null)
+            {
+                <br /><br /><strong>@ViewBag.FeedBack</strong><br /><br />
+                @Html.Raw("Gratulerar, du har besvarat alla frågor i kategorin.<br>")
+                @Html.Raw("Antal rätt: ")
+                @ViewBag.CorrectAnswers
+            }
         }
-    }
 </p>

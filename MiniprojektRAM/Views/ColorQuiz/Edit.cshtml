@@ -1,17 +1,17 @@
 ﻿@model MiniprojektRAM.ViewModels.QuestionViewModel
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "FärgfrågeQuiz";
 }
 
-<h2>View</h2>
+<h2>FärgfrågeQuiz</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>QuestionViewModel</h4>
+        <h4>FärgfrågeQuiz</h4>
         <strong>@ViewBag.FeedBack</strong>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })

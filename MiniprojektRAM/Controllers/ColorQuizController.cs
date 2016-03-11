@@ -24,7 +24,16 @@ namespace MiniprojektRAM.Controllers
         // GET: ColorQuiz
         public ActionResult Index()
         {
-            ViewBag.CorrectAnswers = TempData["corrAnswer"];
+            if (TempData["corrAnswer"] != null)
+            {
+                ViewBag.CorrectAnswers = TempData["corrAnswer"];
+                ViewBag.FeedBack = TempData["FeedBack"];
+                // Nollställ så man kan köra en ny Quiz
+                TempData["corrAnswer"] = null;
+                TempData["QuestionId"] = null;
+                TempData["FeedBack"] = null;
+            }
+
             return View();
         }
 
@@ -79,6 +88,7 @@ namespace MiniprojektRAM.Controllers
             else
             {
                 ViewBag.FeedBack = TempData["FeedBack"];
+                TempData.Keep("FeedBack");
             }
 
             int corrAnswer = Convert.ToInt32(TempData["corrAnswer"]);
@@ -134,7 +144,7 @@ namespace MiniprojektRAM.Controllers
                         TempData["QuestionId"] = i+1;
                         // Man måste redirecta till Get acionen för att vyn ska ta med allt data från modellen
                         // Man kan alltså inte returnera vyn med objektet direkt i en post action
-                        return RedirectToAction("Edit");
+                        return RedirectToAction("Edit", new { id = 0 });
                     }
                     i++;
                 }
