@@ -12,7 +12,6 @@ namespace MiniprojektRAM.ViewModels
         public int cId { get; set; }
         public string QuestionText { get; set; }
         public string AnswerText { get; set; }
-        [Display(Name = "Antal rätta svar")]
         public int CorrAnswers { get; set; }
     }
 }
