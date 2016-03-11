@@ -59,11 +59,7 @@ namespace MiniprojektRAM.Controllers
         // GET: ColorQuiz/Edit/5
         public ActionResult Edit()
         {
-            var questions = repository.GetAllCategorieQuestions(1);
-            ViewBag.FeedBack = "Ny fråga.";
-
-            ViewBag.QuestionId = 0; 
-
+            var questions = repository.GetAllCategorieQuestions(3);
             int i = 1;
 
             if (TempData["corrAnswer"] == null)
@@ -74,6 +70,15 @@ namespace MiniprojektRAM.Controllers
             if (TempData["QuestionId"] == null)
             {
                 TempData["QuestionId"] = 1;
+            }
+
+            if (TempData["FeedBack"] == null)
+            {
+                ViewBag.FeedBack = "Ny fråga.";
+            }
+            else
+            {
+                ViewBag.FeedBack = TempData["FeedBack"];
             }
 
             int corrAnswer = Convert.ToInt32(TempData["corrAnswer"]);
@@ -103,8 +108,8 @@ namespace MiniprojektRAM.Controllers
             try
             {
                 // TODO: Add update logic here
-                var questions = repository.GetAllCategorieQuestions(1);
-                int corrAnswer = question.CorrAnswers; //Convert.ToInt32(ScorrAnswer);
+                var questions = repository.GetAllCategorieQuestions(3);
+                int corrAnswer = question.CorrAnswers;
                 int i = 1;
 
                 foreach (var item in questions)
@@ -115,15 +120,20 @@ namespace MiniprojektRAM.Controllers
                         {
 
                             corrAnswer++;
-                            ViewBag.FeedBack = "Du svarade rätt.";
+                            TempData["FeedBack"] = "Du svarade rätt.";
                         }
                         else
                         {
-                            ViewBag.FeedBack = "Du svarade fel, rätt svar är: " + item.AnswerText;
+                            TempData["FeedBack"] = "Du svarade fel, rätt svar är: " + item.AnswerText;
                         }
+                        //TempData används för att skicka data mellan olika actionanro i samma controller,
+                        // fungerar bara med Redirect. I detta fal för att antal rätta svar ska sparas mellan
+                        // svaren.
                         TempData["corrAnswer"] = corrAnswer;
+                        //Så att nästa fråga i listan med frågor i kategorin väljs i Get actionen
                         TempData["QuestionId"] = i+1;
-
+                        // Man måste redirecta till Get acionen för att vyn ska ta med allt data från modellen
+                        // Man kan alltså inte returnera vyn med objektet direkt i en post action
                         return RedirectToAction("Edit");
                     }
                     i++;

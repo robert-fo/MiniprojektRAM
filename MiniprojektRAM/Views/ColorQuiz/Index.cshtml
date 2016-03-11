@@ -10,6 +10,7 @@
         // Skriver endast ut detta om viewbag är satt i Index actionen efter man svara på alla frågor i en kategori
         if (ViewBag.CorrectAnswers != null)
         {
+            @Html.Raw("Gratulerar, du har besvarat alla frågor i kategorin.<br>")
             @Html.Raw("Antal rätt: ")
             @ViewBag.CorrectAnswers
 
