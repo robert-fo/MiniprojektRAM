@@ -40,7 +40,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AnswerText, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AnswerText, new { htmlAttributes = new { @class = "form-control", @Value="-" } })
+                @Html.RadioButtonFor(model => model.AnswerText, "Blå", new { @style = "width:25px; height:25px; background-color:blue; border:none" })
+                @Html.RadioButtonFor(model => model.AnswerText, "Röd", new { @style = "width:25px; height:25px; background-color:red; border:none" })
+                @Html.RadioButtonFor(model => model.AnswerText, "Gul", new { @style = "width:25px; height:25px; background-color:yellow; border:none" })
+                @*@Html.EditorFor(model => model.AnswerText, new { htmlAttributes = new { @class = "form-control", @Value="-" } })*@
                 @Html.ValidationMessageFor(model => model.AnswerText, "", new { @class = "text-danger" })
             </div>
         </div>
