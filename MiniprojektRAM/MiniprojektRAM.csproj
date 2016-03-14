@@ -195,7 +195,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Pictures\Bil.png" />
     <Content Include="Pictures\Blomma.png" />
+    <Content Include="Pictures\Hast.png" />
+    <Content Include="Pictures\Hund.jpg" />
     <Content Include="Pictures\Hus.jpg" />
+    <Content Include="Pictures\Myra.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
