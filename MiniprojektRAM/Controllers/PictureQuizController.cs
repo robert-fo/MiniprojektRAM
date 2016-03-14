@@ -172,7 +172,7 @@ namespace MiniprojektRAM.Controllers
                         }
                         else
                         {
-                            TempData["FeedBack"] = "Du svarade fel, rätt svar är: " + item.AnswerText;
+                            TempData["FeedBack"] = "Du svarade fel (" + question.AnswerText + "), rätt svar är: " + item.AnswerText;
                         }
                         //TempData används för att skicka data mellan olika actionanro i samma controller,
                         // fungerar bara med Redirect. I detta fal för att antal rätta svar ska sparas mellan
