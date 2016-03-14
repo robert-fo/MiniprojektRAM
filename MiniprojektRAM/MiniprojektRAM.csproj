@@ -164,6 +164,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionCategoriesController.cs" />
     <Compile Include="Controllers\QuestionsController.cs" />
+    <Compile Include="Controllers\SeparatorQuizController.cs" />
     <Compile Include="DataAccessLayer\ItemContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -253,6 +254,8 @@
     <Content Include="Views\ColorQuiz\old_Edit.cshtml" />
     <Content Include="Views\ColorQuiz\Index.cshtml" />
     <Content Include="Views\ColorQuiz\Edit.cshtml" />
+    <Content Include="Views\SeparatorQuiz\Index.cshtml" />
+    <Content Include="Views\SeparatorQuiz\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

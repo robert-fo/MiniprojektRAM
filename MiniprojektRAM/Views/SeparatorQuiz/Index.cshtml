@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "SkiljeteckenQuiz - Index";
+}
+
+<h2>FärgfrågeQuiz - Index</h2>
+@Html.ActionLink("Gör en skiljeteckenquiz!", "Edit")
+<p>
+        @{
+            // Skriver endast ut detta om viewbag är satt i Index actionen efter man svara på alla frågor i en kategori
+            if (ViewBag.CorrectAnswers != null)
+            {
+                <br /><br /><strong>@ViewBag.FeedBack</strong><br /><br />
+                @Html.Raw("Gratulerar, du har besvarat alla frågor i kategorin.<br>")
+                @Html.Raw("Antal rätt: ")
+                @ViewBag.CorrectAnswers
+            }
+        }
+</p>
