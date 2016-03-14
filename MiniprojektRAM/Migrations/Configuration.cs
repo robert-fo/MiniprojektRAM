@@ -41,11 +41,11 @@ namespace MiniprojektRAM.Migrations
               new Question { Id = 4, cId = 4, QuestionText = "hej, svejs, i, lingon, skogen", AnswerText = "hej svejs i lingonskogen" },
               new Question { Id = 5, cId = 1, QuestionText = "Documentation/MiniprojektRAM.png", AnswerText="Klassdiagram2" },
               new Question { Id = 6, cId = 2, QuestionText = "skilje*tecken*2", AnswerText = "skilje-tecken-2" },
-              new Question { Id = 7, cId = 3, QuestionText = "Blå2", AnswerText = "Blå2" },
+              new Question { Id = 7, cId = 3, QuestionText = "Röd", AnswerText = "Röd" },
               new Question { Id = 8, cId = 4, QuestionText = "hej, svejs, i, lingon, skogen 2", AnswerText = "hej svejs i lingonskogen 2" },
               new Question { Id = 9, cId = 1, QuestionText = "Documentation/MiniprojektRAM.png", AnswerText="Klassdiagram3" },
               new Question { Id = 10, cId = 2, QuestionText = "skilje*tecken*3", AnswerText = "skilje-tecken-3" },
-              new Question { Id = 11, cId = 3, QuestionText = "Blå3", AnswerText = "Blå3" },
+              new Question { Id = 11, cId = 3, QuestionText = "Gul", AnswerText = "Gul" },
               new Question { Id = 12, cId = 4, QuestionText = "hej, svejs, i, lingon, skogen 3", AnswerText = "hej svejs i lingonskogen 3" }
             );
 

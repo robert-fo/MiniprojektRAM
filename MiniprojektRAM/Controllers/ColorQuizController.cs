@@ -66,7 +66,7 @@ namespace MiniprojektRAM.Controllers
         }
 
         // GET: ColorQuiz/Edit/5
-        public ActionResult Edit()
+        public ActionResult TakeQuiz()
         {
             var questions = repository.GetAllCategorieQuestions(3);
             int i = 1;
@@ -113,7 +113,7 @@ namespace MiniprojektRAM.Controllers
 
         // POST: ColorQuiz/Edit/5
         [HttpPost]
-        public ActionResult Edit(QuestionViewModel question)
+        public ActionResult TakeQuiz(QuestionViewModel question)
         {
             try
             {
@@ -144,7 +144,7 @@ namespace MiniprojektRAM.Controllers
                         TempData["QuestionId"] = i+1;
                         // Man måste redirecta till Get acionen för att vyn ska ta med allt data från modellen
                         // Man kan alltså inte returnera vyn med objektet direkt i en post action
-                        return RedirectToAction("Edit", new { id = 0 });
+                        return RedirectToAction("TakeQuiz", new { id = 0 });
                     }
                     i++;
                 }
