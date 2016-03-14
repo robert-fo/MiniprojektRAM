@@ -257,11 +257,12 @@
     <Content Include="Views\Questions\Index.cshtml" />
     <Content Include="Views\ColorQuiz\old_Edit.cshtml" />
     <Content Include="Views\ColorQuiz\Index.cshtml" />
-    <Content Include="Views\SeparatorQuiz\Index.cshtml" />
+    <Content Include="Views\ColorQuiz\TakeQuiz.cshtml" />
+    <Content Include="Views\PictureQuiz.cshtml" />
     <Content Include="Views\SeparatorQuiz\Edit.cshtml" />
+    <Content Include="Views\SeparatorQuiz\Index.cshtml" />
     <Content Include="Views\PictureQuiz\Edit.cshtml" />
     <Content Include="Views\PictureQuiz\Index.cshtml" />
-    <Content Include="Views\PictureQuiz.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
