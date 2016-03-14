@@ -78,9 +78,10 @@ namespace MiniprojektRAM.Controllers
 
             var queryQuestions = from question in questions
                                  where question.cId == 3
+                                 orderby question.Id
                                  select question;
 
-            var result = queryQuestions.ToList();
+            var catquestions = queryQuestions.ToList();
 
             int i = 1;
 
@@ -106,7 +107,7 @@ namespace MiniprojektRAM.Controllers
 
             int corrAnswer = Convert.ToInt32(TempData["corrAnswer"]);
 
-            foreach (var item in result) 
+            foreach (var item in catquestions) 
             {
                 if (i == Convert.ToInt32(TempData["QuestionId"]))
                 {
@@ -136,6 +137,7 @@ namespace MiniprojektRAM.Controllers
 
                 var queryQuestions = from q in questions
                                      where q.cId == 3
+                                     orderby question.Id
                                      select q;
 
                 var catquestions = queryQuestions.ToList();
@@ -143,7 +145,7 @@ namespace MiniprojektRAM.Controllers
                 int corrAnswer = question.CorrAnswers;
                 int i = 1;
 
-                foreach (var item in questions)
+                foreach (var item in catquestions)
                 {
                     if (item.Id == question.Id)
                     {
