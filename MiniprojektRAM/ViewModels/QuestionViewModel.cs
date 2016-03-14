@@ -16,5 +16,20 @@ namespace MiniprojektRAM.ViewModels
         public string QuestionText { get; set; }
         public string AnswerText { get; set; }
         public int CorrAnswers { get; set; }
+
+        public QuestionViewModel(int id, int cid, string question, string answer, int corr)
+        {
+            // TODO: Complete member initialization
+            this.Id = id;
+            this.cId = cid;
+            this.QuestionText = question;
+            this.AnswerText = answer;
+            this.CorrAnswers = corr;
+        }
+
+        public QuestionViewModel()
+        {
+
+        }
     }
 }
