@@ -14,11 +14,17 @@ namespace MiniprojektRAM.Controllers
     public class ColorQuizController : Controller
     {
 
-        private WorkingRepository repository;
+        private IRepository repository;
 
         public ColorQuizController()
         {
-            this.repository = new WorkingRepository();
+            this.repository = new WorkingRepositoryV2();
+        }
+
+        public ColorQuizController(IRepository questionRepository)
+        {
+            // TODO: Complete member initialization
+            this.repository = questionRepository;
         }
         
         // GET: ColorQuiz
@@ -68,7 +74,14 @@ namespace MiniprojektRAM.Controllers
         // GET: ColorQuiz/Edit/5
         public ActionResult TakeQuiz()
         {
-            var questions = repository.GetAllCategorieQuestions(3);
+            var questions = repository.GetAllCategorieQuestions();
+
+            var queryQuestions = from question in questions
+                                 where question.cId == 3
+                                 select question;
+
+            var result = queryQuestions.ToList();
+
             int i = 1;
 
             if (TempData["corrAnswer"] == null)
@@ -93,7 +106,7 @@ namespace MiniprojektRAM.Controllers
 
             int corrAnswer = Convert.ToInt32(TempData["corrAnswer"]);
 
-            foreach (var item in questions) 
+            foreach (var item in result) 
             {
                 if (i == Convert.ToInt32(TempData["QuestionId"]))
                 {
@@ -113,12 +126,20 @@ namespace MiniprojektRAM.Controllers
 
         // POST: ColorQuiz/Edit/5
         [HttpPost]
-        public ActionResult TakeQuiz(QuestionViewModel question)
+        [ActionName("TakeQuiz")]
+        public ActionResult TakeQuizPost(QuestionViewModel question)
         {
             try
             {
                 // TODO: Add update logic here
-                var questions = repository.GetAllCategorieQuestions(3);
+                var questions = repository.GetAllCategorieQuestions();
+
+                var queryQuestions = from q in questions
+                                     where q.cId == 3
+                                     select q;
+
+                var catquestions = queryQuestions.ToList();
+
                 int corrAnswer = question.CorrAnswers;
                 int i = 1;
 

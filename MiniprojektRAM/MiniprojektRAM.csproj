@@ -93,6 +93,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.JustMock">
+      <HintPath>..\packages\JustMock.2016.1.307.3\lib\Net35\Telerik.JustMock.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -181,7 +184,9 @@
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Repository\WorkingRepository.cs" />
+    <Compile Include="Repository\WorkingRepositoryV2.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\QuestionViewModel.cs" />
   </ItemGroup>
